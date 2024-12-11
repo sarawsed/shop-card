@@ -34,16 +34,15 @@ export default function DrawerComponent({ openDrawer, toggleDrawer }) {
               <CardComponent info={item}>
                 <Box
                   sx={{
-                    margin: "auto",
                     display: "flex",
                     flexDirection: "row",
-                    justifyContent: "space-around",
+                    justifyContent: "space-between",
                   }}
                 >
                   <Button
-                    color="primary"
                     xsx={{ padding: 2, width: "content" }}
                     variant="contained"
+                    color="success"
                     onClick={(e) => handleDecreaseItem(e, item.id)}
                   >
                     -
@@ -52,17 +51,21 @@ export default function DrawerComponent({ openDrawer, toggleDrawer }) {
                     count: {item.count}
                   </Typography>
                   <Button
-                    color="primary"
                     xsx={{ padding: 2, width: "content" }}
                     variant="contained"
-                    onClick={(e) => handleShop(e, item)}
+                    color="success"
                     disabled={item.count === 30}
+                    onClick={(e) => handleShop(e, item)}
                   >
                     +
                   </Button>
                 </Box>
                 {item.count === 30 && (
-                  <Typography color="error" variant="caption">
+                  <Typography
+                    variant="caption"
+                    color="error"
+                    sx={{ fontSize: "12px" }}
+                  >
                     از هر محصول حداکثر 30 عدد میتوان سفارش داد
                   </Typography>
                 )}{" "}
@@ -72,7 +75,9 @@ export default function DrawerComponent({ openDrawer, toggleDrawer }) {
           </Box>
         ))
       ) : (
-        <Typography>empty basket!</Typography>
+        <Typography sx={{ fontSize: "18px", textAlign: "center" }}>
+          !خالی
+        </Typography>
       )}
     </Box>
   );
